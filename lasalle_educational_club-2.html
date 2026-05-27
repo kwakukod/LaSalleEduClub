@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LaSalle Educational Club Inc. – Key to Success</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c9a227;
+    --gold-light: #f0d060;
+    --cream: #fdf8ef;
+    --warm-white: #fffef8;
+    --text-dark: #1a1a1a;
+    --text-mid: #444;
+    --nav-h: 68px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--warm-white); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ======== NAV ======== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: var(--navy);
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 1.5rem;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 0.75rem;
+    text-decoration: none;
+  }
+  .nav-brand img {
+    height: 46px; width: 46px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    flex-shrink: 0;
+  }
+  .nav-brand-text {
+    display: flex; flex-direction: column; line-height: 1.2;
+  }
+  .nav-brand-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .nav-brand-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* Hamburger */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .nav-drawer {
+    display: none;
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: var(--navy);
+    z-index: 199;
+    padding: 1rem 0 1.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    border-top: 1px solid rgba(201,162,39,0.2);
+    transform: translateY(-10px); opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-drawer.open { transform: translateY(0); opacity: 1; }
+  .nav-drawer ul { list-style: none; }
+  .nav-drawer ul li a {
+    display: block;
+    padding: 0.85rem 2rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-drawer ul li a:hover { color: var(--gold-light); background: rgba(201,162,39,0.05); }
+
+  /* ======== HERO ======== */
+  .hero {
+    min-height: 100svh;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding-top: var(--nav-h);
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(201,162,39,0.04) 0px, rgba(201,162,39,0.04) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(-45deg, rgba(201,162,39,0.04) 0px, rgba(201,162,39,0.04) 1px, transparent 1px, transparent 40px);
+  }
+  .hero-glow {
+    position: absolute;
+    width: min(700px, 90vw); height: min(700px, 90vw);
+    background: radial-gradient(circle, rgba(201,162,39,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 3rem 1.5rem 4rem;
+    animation: fadeUp 1s ease both;
+    width: 100%;
+  }
+  .hero-logo-wrap {
+    margin-bottom: 1.5rem;
+  }
+  .hero-logo-wrap img {
+    width: 110px; height: 110px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    box-shadow: 0 0 40px rgba(201,162,39,0.25);
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 600; margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 8vw, 5.5rem);
+    color: #fff; line-height: 1.05; font-weight: 900; margin-bottom: 0.4rem;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.4rem);
+    color: rgba(255,255,255,0.55); font-weight: 400;
+    margin-bottom: 1.5rem; letter-spacing: 0.05em;
+  }
+  .hero-tagline {
+    display: inline-block;
+    border: 1.5px solid var(--gold); color: var(--gold-light);
+    padding: 0.5rem 1.6rem; font-size: 0.9rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 2.5rem;
+  }
+  .hero-stats {
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1s 0.3s ease both; opacity: 0;
+  }
+  .stat { text-align: center; min-width: 100px; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    color: var(--gold); font-weight: 700; display: block; line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem; color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.3rem;
+  }
+  .scroll-hint {
+    position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.3); font-size: 0.7rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    animation: bounce 2s infinite;
+  }
+  .scroll-hint::after { content: '↓'; font-size: 1.1rem; color: var(--gold); }
+
+  /* ======== SECTIONS ======== */
+  section { padding: 4rem 1.25rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    color: var(--navy); line-height: 1.15; margin-bottom: 1.2rem;
+  }
+  .section-title.light { color: #fff; }
+  .divider { width: 50px; height: 3px; background: var(--gold); margin-bottom: 1.8rem; }
+
+  /* ======== ABOUT ======== */
+  #about { background: var(--cream); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem; align-items: start;
+  }
+  .about-text p { font-size: 1rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.1rem; }
+  .about-text strong { color: var(--navy); }
+  .about-quote {
+    background: var(--navy); padding: 2rem 2rem;
+    border-left: 4px solid var(--gold); margin-top: 1.8rem;
+  }
+  .about-quote p {
+    font-family: 'Playfair Display', serif; font-size: 1.1rem;
+    color: #fff; font-style: italic; line-height: 1.6; margin-bottom: 0.7rem;
+  }
+  .about-quote cite { font-size: 0.82rem; color: var(--gold); letter-spacing: 0.08em; font-style: normal; }
+  .about-pillars { display: flex; flex-direction: column; gap: 1.2rem; }
+  .pillar {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.3rem; background: #fff;
+    border: 1px solid rgba(201,162,39,0.2);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .pillar:hover { border-color: var(--gold); transform: translateX(4px); }
+  .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+  .pillar h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 0.3rem; }
+  .pillar p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ======== HISTORY ======== */
+  #history { background: var(--navy); }
+  .timeline { position: relative; padding-left: 2rem; margin-top: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 2rem;
+    opacity: 0; transform: translateX(-16px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .timeline-item.visible { opacity: 1; transform: translateX(0); }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -2rem; top: 0.3rem;
+    width: 10px; height: 10px; background: var(--gold);
+    border-radius: 50%; transform: translateX(-4px);
+  }
+  .timeline-year { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.25rem; }
+  .timeline-text { font-size: 0.93rem; color: rgba(255,255,255,0.75); line-height: 1.65; }
+
+  /* ======== SCHOLARSHIPS ======== */
+  #scholarships { background: var(--warm-white); }
+  .scholarship-intro { font-size: 1rem; color: var(--text-mid); line-height: 1.8; max-width: 680px; margin-bottom: 2rem; }
+  .scholarship-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .scholarship-card {
+    background: #fff; border: 1px solid rgba(201,162,39,0.2);
+    padding: 1.2rem 1.3rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .scholarship-card:hover { border-color: var(--gold); box-shadow: 4px 4px 0 rgba(201,162,39,0.15); }
+  .sc-name { font-size: 0.88rem; font-weight: 600; color: var(--navy); line-height: 1.4; }
+  .sc-amount { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+  .scholarship-note { background: var(--navy); padding: 1.8rem 2rem; border-left: 4px solid var(--gold); }
+  .scholarship-note h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--gold); margin-bottom: 0.9rem; }
+  .scholarship-note ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem 2rem; }
+  .scholarship-note ul li { font-size: 0.88rem; color: rgba(255,255,255,0.8); padding-left: 1.1rem; position: relative; line-height: 1.5; }
+  .scholarship-note ul li::before { content: '›'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+  /* ======== RECIPIENTS ======== */
+  #recipients { background: var(--cream); }
+  .recipients-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.9rem; margin-top: 1.5rem; }
+  .recipient-card { background: #fff; padding: 1.1rem 1.3rem; border-top: 3px solid var(--gold); }
+  .recipient-name { font-weight: 700; font-size: 0.93rem; color: var(--navy); margin-bottom: 0.2rem; }
+  .recipient-award { font-size: 0.8rem; color: var(--text-mid); line-height: 1.4; margin-bottom: 0.35rem; }
+  .recipient-amount { font-size: 0.85rem; color: var(--gold); font-weight: 700; }
+
+  /* ======== HONOREES ======== */
+  #honorees { background: var(--navy); }
+  .honorees-flex { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  .honoree-card {
+    border: 1px solid rgba(201,162,39,0.3); padding: 1.8rem 1.5rem; text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .honoree-card:hover { border-color: var(--gold); background: rgba(201,162,39,0.05); }
+  .honoree-award-tag {
+    display: inline-block; font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    border: 1px solid var(--gold); padding: 0.22rem 0.7rem; margin-bottom: 1rem;
+  }
+  .honoree-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 0.6rem; }
+  .honoree-bio { font-size: 0.87rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+  /* ======== MEMBERS ======== */
+  #members { background: var(--warm-white); }
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.7rem; margin-top: 1.5rem; }
+  .member-chip {
+    background: var(--navy); color: #fff; padding: 0.75rem 1rem;
+    font-size: 0.88rem; font-weight: 600; letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .member-chip .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  .member-role { font-size: 0.72rem; color: var(--gold); font-weight: 400; margin-left: auto; }
+  .judges-section { margin-top: 2.5rem; padding: 1.8rem 2rem; background: var(--cream); border: 1px solid rgba(201,162,39,0.2); }
+  .judges-section h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.7rem; }
+  .judge-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .judge-tag { background: #fff; border: 1px solid rgba(201,162,39,0.3); padding: 0.38rem 0.9rem; font-size: 0.84rem; color: var(--text-mid); }
+
+  /* ======== APPLY ======== */
+  #apply { background: var(--navy); }
+  .apply-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  .apply-text p { font-size: 0.98rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1.1rem; }
+  .apply-cta {
+    display: inline-block; background: var(--gold); color: var(--navy);
+    padding: 0.8rem 2.2rem; font-weight: 700; font-size: 0.88rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; margin-top: 0.5rem; transition: background 0.2s;
+  }
+  .apply-cta:hover { background: var(--gold-light); }
+  .contact-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,162,39,0.3); padding: 2rem; }
+  .contact-box h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--gold); margin-bottom: 1.4rem; }
+  .contact-row { display: flex; gap: 0.9rem; margin-bottom: 1rem; align-items: flex-start; }
+  .contact-icon { font-size: 1.05rem; margin-top: 0.1rem; }
+  .contact-detail { font-size: 0.93rem; color: rgba(255,255,255,0.8); line-height: 1.55; }
+  .contact-detail strong { color: #fff; display: block; margin-bottom: 0.1rem; }
+
+  /* ======== FOOTER ======== */
+  footer {
+    background: #070f24; color: rgba(255,255,255,0.45);
+    text-align: center; padding: 1.8rem 1rem;
+    font-size: 0.82rem; letter-spacing: 0.04em; line-height: 1.7;
+  }
+  footer span { color: var(--gold); }
+
+  /* ======== ANIMATIONS ======== */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ======== RESPONSIVE ======== */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-drawer { display: block; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .honorees-flex { grid-template-columns: 1fr; gap: 1.2rem; }
+    .apply-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+    .scholarship-note ul { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    :root { --nav-h: 60px; }
+    nav { padding: 0 1rem; }
+    .nav-brand img { height: 38px; width: 38px; }
+    .nav-brand-name { font-size: 0.88rem; }
+    .nav-brand-sub { font-size: 0.62rem; }
+    section { padding: 3rem 1rem; }
+    .hero-content { padding: 2.5rem 1rem 3.5rem; }
+    .hero-logo-wrap img { width: 90px; height: 90px; }
+    .hero-stats { gap: 1rem; }
+    .stat { min-width: 80px; }
+    .scholarship-grid { grid-template-columns: 1fr; }
+    .recipients-grid { grid-template-columns: 1fr 1fr; }
+    .members-grid { grid-template-columns: 1fr 1fr; }
+    .scholarship-note { padding: 1.4rem 1.2rem; }
+    .about-quote { padding: 1.5rem; }
+    .contact-box { padding: 1.5rem; }
+    .judges-section { padding: 1.4rem; }
+  }
+
+  @media (max-width: 420px) {
+    .recipients-grid { grid-template-columns: 1fr; }
+    .members-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <img src="https://i.postimg.cc/SK0mCV8B/circle-1200-1779840900516.png" alt="LaSalle Educational Club Logo">
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">LaSalle Educational Club</span>
+      <span class="nav-brand-sub">Key to Success · Est. 1957</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#scholarships">Scholarships</a></li>
+    <li><a href="#recipients">Recipients</a></li>
+    <li><a href="#honorees">Honorees</a></li>
+    <li><a href="#members">Members</a></li>
+    <li><a href="#apply">Apply</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<nav class="nav-drawer" id="drawer">
+  <ul>
+    <li><a href="#about" class="drawer-link">About</a></li>
+    <li><a href="#history" class="drawer-link">History</a></li>
+    <li><a href="#scholarships" class="drawer-link">Scholarships</a></li>
+    <li><a href="#recipients" class="drawer-link">Recipients</a></li>
+    <li><a href="#honorees" class="drawer-link">Honorees</a></li>
+    <li><a href="#members" class="drawer-link">Members</a></li>
+    <li><a href="#apply" class="drawer-link">Apply</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-logo-wrap">
+      <img src="https://i.postimg.cc/SK0mCV8B/circle-1200-1779840900516.png" alt="LaSalle Educational Club">
+    </div>
+    <p class="hero-eyebrow">Niagara Falls, New York · Est. 1957</p>
+    <h1 class="hero-title">LaSalle<br><em>Educational</em><br>Club Inc.</h1>
+    <p class="hero-sub">Niagara Falls, New York</p>
+    <div class="hero-tagline">🎓 Key to Success</div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-number">56+</span><span class="stat-label">Years of Service</span></div>
+      <div class="stat"><span class="stat-number">574</span><span class="stat-label">Scholarships Given</span></div>
+      <div class="stat"><span class="stat-number">$153K+</span><span class="stat-label">Total Awarded</span></div>
+      <div class="stat"><span class="stat-number">1,363</span><span class="stat-label">Students Reached</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-title">Empowering Niagara Falls Students Since 1957</h2>
+        <div class="divider"></div>
+        <p>The <strong>LaSalle Educational Club Inc.</strong> is a Niagara Falls community organization dedicated to providing scholarship funding and recognition to graduating Niagara Falls High School students. We believe that <strong>Education Is Power</strong> — and that every deserving student deserves a path forward.</p>
+        <p>What began as a small social gathering of 25 mothers in 1957 has grown into one of the Niagara Falls area's most beloved scholarship organizations, bringing together more than 200 community members, parents, educators, and city representatives at our annual Black Scholarship &amp; Award Banquet each year.</p>
+        <p>Our club funds scholarships through the proceeds of our Annual Scholarship &amp; Award Dinner Banquet and community partnerships. We also honor outstanding community members and educators who embody our shared values.</p>
+        <div class="about-quote">
+          <p>"Education is for improving the lives of others and for leaving your community and the world better than you found it."</p>
+          <cite>— Marian Wright Edelman</cite>
+        </div>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🏫</div>
+          <div><h4>College Scholarships</h4><p>Need- and merit-based scholarships for first-year college, vocational, trade school, and military-bound graduates of Niagara Falls High School.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🌟</div>
+          <div><h4>Community Recognition</h4><p>Each year we honor outstanding community members with Humanitarian, Community Service, and Educator Awards.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🤝</div>
+          <div><h4>Community Support</h4><p>Beyond scholarships, we donate to area churches, the Negro College Fund, provide Pre-Thanksgiving dinners for seniors, and support families in need.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📖</div>
+          <div><h4>Family Empowerment</h4><p>Rooted in founder Lexie M. Sanders' legacy — empowering families to be independent, resourceful, and educated.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section id="history">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--gold)">Our Story</p>
+    <h2 class="section-title light">A Legacy Built on Love for Community</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1957</div>
+        <div class="timeline-text">Founder <strong style="color:#fff">Lexie M. Sanders</strong> recruited 25 mothers and organized the <em>Ever-Ready Mothers Club</em> at the Griffon Manor Housing Complex — providing healthy social experiences for families and wholesome childhood experiences for children.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1967</div>
+        <div class="timeline-text">The club held its first Awards Banquet, honoring graduates of LaSalle Senior High School who lived in Griffon Manor — a tradition that continues to this day.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1973</div>
+        <div class="timeline-text">Renamed the <strong style="color:#fff">LaSalle Social Club</strong> and expanded community efforts. The estate of Cleon Wilkins — who believed "education was prosperity" — donated $634.00 through the Niagara Falls Board of Education.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1979</div>
+        <div class="timeline-text">The first named scholarship — the <strong style="color:#fff">Rev. James M. Bradley Scholarship</strong> ($300) — was awarded to Deborah Cooper of LaSalle Senior High School.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1989</div>
+        <div class="timeline-text">Officially renamed the <strong style="color:#fff">LaSalle Educational Club Inc.</strong> to reflect its community-wide educational mission.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1992–1997</div>
+        <div class="timeline-text">Expanded charitable work beyond scholarships — running medical benefit campaigns and raising thousands of dollars for community members and families in need.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Today</div>
+        <div class="timeline-text">The Annual Banquet has grown from 30 to <strong style="color:#fff">200+ attendees</strong>. To date, the club has awarded <strong style="color:#fff">574 scholarships totaling over $153,822</strong>, with 1,363 students participating through the Niagara Falls City School District.</div>
+      </div>
+    </div>
+    <div style="margin-top:2rem;padding:1.8rem;border:1px solid rgba(201,162,39,0.3);background:rgba(201,162,39,0.05);">
+      <p style="font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:#fff;text-align:center;line-height:1.7;">"It is so nice to be nice"<br><span style="font-size:0.82rem;color:var(--gold);font-style:normal;letter-spacing:0.08em;">— Lexie M. Sanders, Founder</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOLARSHIPS -->
+<section id="scholarships">
+  <div class="section-inner">
+    <p class="section-label">2026 Scholarship Season</p>
+    <h2 class="section-title">Scholarships & Awards Available</h2>
+    <div class="divider"></div>
+    <p class="scholarship-intro">The LaSalle Educational Club Inc. offers <strong>19 named scholarships and awards</strong> to graduating Niagara Falls High School students. Open to all ethnic backgrounds, including those enrolling in college, vocational/trade school, or the military.</p>
+    <div class="scholarship-grid">
+      <div class="scholarship-card"><span class="sc-name">Reverend J.M. Bradley Scholarship <small style="font-weight:400;color:#888;display:block">(Must be African American)</small></span><span class="sc-amount">$1,300</span></div>
+      <div class="scholarship-card"><span class="sc-name">Reverend Glenn Raybon Civil Rights Scholarship</span><span class="sc-amount">$1,000</span></div>
+      <div class="scholarship-card"><span class="sc-name">Eric L. Jones "I Can" Memorial Scholarship</span><span class="sc-amount">$1,000</span></div>
+      <div class="scholarship-card"><span class="sc-name">Lexie M. Sanders Community Good Works Scholarship</span><span class="sc-amount">$1,000</span></div>
+      <div class="scholarship-card"><span class="sc-name">Edward "Pete" Ivey Education Scholarship</span><span class="sc-amount">$1,000</span></div>
+      <div class="scholarship-card"><span class="sc-name">LaSalle Educational Club Inc. Scholarship</span><span class="sc-amount">$1,000</span></div>
+      <div class="scholarship-card"><span class="sc-name">Neziezadie McBride Brown Integrity Scholarship</span><span class="sc-amount">$1,000</span></div>
+      <div class="scholarship-card"><span class="sc-name">Nathan A. Dolson Jr. Leadership Scholarship</span><span class="sc-amount">$800</span></div>
+      <div class="scholarship-card"><span class="sc-name">LaSalle Educational Club Inc. Good Faith Scholarship</span><span class="sc-amount">$600</span></div>
+      <div class="scholarship-card"><span class="sc-name">Shalise Monet Carter Humanitarian Scholarship</span><span class="sc-amount">$500</span></div>
+      <div class="scholarship-card"><span class="sc-name">Theodore Williamson Education Scholarship</span><span class="sc-amount">$500</span></div>
+      <div class="scholarship-card"><span class="sc-name">Men Standing Strong Together Award</span><span class="sc-amount">$500</span></div>
+      <div class="scholarship-card"><span class="sc-name">Niagara Falls NY Community Lion Club Award</span><span class="sc-amount">$500</span></div>
+      <div class="scholarship-card"><span class="sc-name">Frontier Chapter No. Eastern Star Education Scholarship</span><span class="sc-amount">$500</span></div>
+      <div class="scholarship-card"><span class="sc-name">Kelab Sanders Jr. Brotherhood Scholarship</span><span class="sc-amount">$400</span></div>
+      <div class="scholarship-card"><span class="sc-name">Councilman Robert A. Anderson Jr. Memorial Award</span><span class="sc-amount">$300</span></div>
+      <div class="scholarship-card"><span class="sc-name">Lillie P. Stephens Female Athletic Award</span><span class="sc-amount">$300</span></div>
+      <div class="scholarship-card"><span class="sc-name">Shalise Monet Carter Memorial Award</span><span class="sc-amount">$200</span></div>
+      <div class="scholarship-card"><span class="sc-name">LaSalle Educational Club Inc. Student Award</span><span class="sc-amount">$200</span></div>
+    </div>
+    <div class="scholarship-note">
+      <h4>📋 Application Guidelines</h4>
+      <ul>
+        <li>Deadline: Friday, April 24, 2026 — No Exceptions</li>
+        <li>Submit official high school transcript</li>
+        <li>Write a 500-word essay</li>
+        <li>Include cover letter listing desired scholarships</li>
+        <li>Return application to guidance office</li>
+        <li>Winner must be present at ceremony (or parent/guardian)</li>
+        <li>Open to college, vocational, trade school &amp; military</li>
+        <li>Students have one year to claim their scholarship</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RECIPIENTS -->
+<section id="recipients">
+  <div class="section-inner">
+    <p class="section-label">Class of 2025</p>
+    <h2 class="section-title">2025 Scholarship Recipients</h2>
+    <div class="divider"></div>
+    <div class="recipients-grid">
+      <div class="recipient-card"><div class="recipient-name">Preston Trojak</div><div class="recipient-award">Rev. J.M. Bradley Scholarship</div><div class="recipient-amount">$1,300</div></div>
+      <div class="recipient-card"><div class="recipient-name">Mikkel Howard</div><div class="recipient-award">Rev. Glenn Raybon Civil Rights Scholarship</div><div class="recipient-amount">$1,000</div></div>
+      <div class="recipient-card"><div class="recipient-name">Ke'ajahnae Walker</div><div class="recipient-award">I Can Eric L. Jones Memorial Scholarship</div><div class="recipient-amount">$1,000</div></div>
+      <div class="recipient-card"><div class="recipient-name">Johnathan Touma</div><div class="recipient-award">Lexie M. Sanders Community Service Scholarship</div><div class="recipient-amount">$1,000</div></div>
+      <div class="recipient-card"><div class="recipient-name">Ayanna Hilson</div><div class="recipient-award">Edward "Pete" Ivey Memorial Scholarship</div><div class="recipient-amount">$1,000</div></div>
+      <div class="recipient-card"><div class="recipient-name">Jackson Barg</div><div class="recipient-award">Nathan A. Dolson Jr. Leadership Scholarship</div><div class="recipient-amount">$800</div></div>
+      <div class="recipient-card"><div class="recipient-name">Casey Campbell</div><div class="recipient-award">LaSalle Educational Club Inc. Scholarship</div><div class="recipient-amount">$800</div></div>
+      <div class="recipient-card"><div class="recipient-name">Jasmine Purewal</div><div class="recipient-award">LaSalle Educational Club Good Faith Scholarship</div><div class="recipient-amount">$600</div></div>
+      <div class="recipient-card"><div class="recipient-name">Kyasia Hall</div><div class="recipient-award">Shalise Monet Carter Humanitarian Scholarship</div><div class="recipient-amount">$500</div></div>
+      <div class="recipient-card"><div class="recipient-name">Noriana Ellison</div><div class="recipient-award">Theodore Williamson Education Scholarship</div><div class="recipient-amount">$500</div></div>
+      <div class="recipient-card"><div class="recipient-name">Ethan Copelin</div><div class="recipient-award">Men Standing Strong Together</div><div class="recipient-amount">$500</div></div>
+      <div class="recipient-card"><div class="recipient-name">Jocelyn Mercurio</div><div class="recipient-award">Niagara Falls Community Lions Club</div><div class="recipient-amount">$500</div></div>
+      <div class="recipient-card"><div class="recipient-name">Haylee Kurtis</div><div class="recipient-award">Frontier Chapter No. 20 Education Scholarship</div><div class="recipient-amount">$500</div></div>
+      <div class="recipient-card"><div class="recipient-name">Nicholas Caligiuri</div><div class="recipient-award">Kelab Sanders Jr. Brotherhood Scholarship</div><div class="recipient-amount">$400</div></div>
+      <div class="recipient-card"><div class="recipient-name">Leah Kresman</div><div class="recipient-award">Councilman Robert A. Anderson Jr. Memorial Scholarship</div><div class="recipient-amount">$300</div></div>
+      <div class="recipient-card"><div class="recipient-name">Marwa Alshawli</div><div class="recipient-award">Lillie P. W. Stephens Female Athletic Award</div><div class="recipient-amount">$300</div></div>
+      <div class="recipient-card"><div class="recipient-name">Destiny Goldsmith</div><div class="recipient-award">LaSalle Educational Club Inc. Student Award</div><div class="recipient-amount">$300</div></div>
+      <div class="recipient-card"><div class="recipient-name">Alina Antonetty</div><div class="recipient-award">Shalise Monet Carter Memorial Award</div><div class="recipient-amount">$200</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HONOREES -->
+<section id="honorees">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--gold)">2025 Honorees</p>
+    <h2 class="section-title light">Community Leaders We Celebrate</h2>
+    <div class="divider"></div>
+    <div class="honorees-flex">
+      <div class="honoree-card">
+        <div class="honoree-award-tag">Humanitarian Award</div>
+        <div class="honoree-name">Yvonne Alston Taylor</div>
+        <div class="honoree-bio">A lifelong healthcare worker and community servant, Ms. Taylor has served as a Health Care Aide, Senior Companion, and active leader at New Hope Baptist Church of Niagara Falls — serving on the Mission Board, Usher Board, and Women's Fellowship.</div>
+      </div>
+      <div class="honoree-card">
+        <div class="honoree-award-tag">Community Service Award</div>
+        <div class="honoree-name">Dorothy West</div>
+        <div class="honoree-bio">Born and raised in Niagara Falls, Dorothy has dedicated her life to community involvement — Parent President of LaSalle Preparatory School, Exchange Club, Kiwanis Club, Niagara County Peacemakers, Lion Club, and Niagara Gospel Mission.</div>
+      </div>
+      <div class="honoree-card">
+        <div class="honoree-award-tag">Educator Award</div>
+        <div class="honoree-name">Philip Mohr</div>
+        <div class="honoree-bio">NFHS Class of 2004 alumnus and special education teacher at Cataract Elementary School. Mr. Mohr holds an M.S. in Special Education from Canisius College and serves as President of the Niagara PAL Board of Directors.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <div class="section-inner">
+    <p class="section-label">Our Team</p>
+    <h2 class="section-title">Club Members & Leadership</h2>
+    <div class="divider"></div>
+    <div class="members-grid">
+      <div class="member-chip"><div class="dot"></div>Gloria J. Dolson<span class="member-role">President</span></div>
+      <div class="member-chip"><div class="dot"></div>Valarie N. Dolson-Morris</div>
+      <div class="member-chip"><div class="dot"></div>Joyce Sanders</div>
+      <div class="member-chip"><div class="dot"></div>Portland Jackson</div>
+      <div class="member-chip"><div class="dot"></div>Jacqueline J. Sanders</div>
+      <div class="member-chip"><div class="dot"></div>Loretta Hamilton</div>
+      <div class="member-chip"><div class="dot"></div>Betty Coleman</div>
+    </div>
+    <div class="judges-section">
+      <h4>🏅 2025 Scholarship Judges</h4>
+      <div class="judge-list">
+        <span class="judge-tag">Dr. Robin Erwin</span>
+        <span class="judge-tag">Pastor Charles Walker III</span>
+        <span class="judge-tag">Stephanie W. Cowart</span>
+        <span class="judge-tag">Monica Hamilton</span>
+        <span class="judge-tag">Stephaine Huston</span>
+      </div>
+    </div>
+    <div class="judges-section" style="margin-top:1.2rem;">
+      <h4>✨ Hostesses &amp; Escorts</h4>
+      <div class="judge-list">
+        <span class="judge-tag">Angela Manella</span>
+        <span class="judge-tag">Haleigh Bianco</span>
+        <span class="judge-tag">Adrian McQueen</span>
+        <span class="judge-tag">Lauren Falsetti</span>
+        <span class="judge-tag">Clara Dunn</span>
+        <span class="judge-tag">Carol McTyere</span>
+        <span class="judge-tag">Gradija Williams</span>
+        <span class="judge-tag">Stephanie Lee</span>
+        <span class="judge-tag">David Janese</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section id="apply">
+  <div class="section-inner">
+    <div class="apply-wrap">
+      <div class="apply-text">
+        <p class="section-label" style="color:var(--gold)">For Students</p>
+        <h2 class="section-title light">Apply for a 2026 Scholarship</h2>
+        <div class="divider"></div>
+        <p>Are you a graduating Niagara Falls High School student? The LaSalle Educational Club Inc. invites you to apply for one of our <strong style="color:#fff">19 scholarships and awards</strong> for the Class of 2026.</p>
+        <p>Applications are available at the NFHS Guidance Office. Students of all ethnic backgrounds and those enrolling in college, vocational/trade school, or the military are encouraged to apply.</p>
+        <p style="color:var(--gold);font-weight:700;font-size:1rem;">⏰ Deadline: Friday, April 24, 2026 — No Exceptions</p>
+        <a href="#scholarships" class="apply-cta">View All Scholarships</a>
+      </div>
+      <div class="contact-box">
+        <h4>Contact Us</h4>
+        <div class="contact-row">
+          <span class="contact-icon">📍</span>
+          <div class="contact-detail"><strong>Mailing Address</strong>LaSalle Educational Club Inc.<br>1352 Cleveland Avenue<br>Niagara Falls, NY 14305</div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">📞</span>
+          <div class="contact-detail"><strong>Phone</strong>(716) 285-2965</div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">🏫</span>
+          <div class="contact-detail"><strong>Annual Banquet Venue</strong>Niagara Falls High School<br>4455 Porter Road, Niagara Falls, NY 14305</div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">🗓️</span>
+          <div class="contact-detail"><strong>Annual Banquet</strong>Held each June — watch for announcements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span>LaSalle Educational Club Inc.</span> · Niagara Falls, New York</p>
+  <p style="margin-top:0.4rem;"><em>"It is so nice to be nice"</em> – Lexie M. Sanders &nbsp;|&nbsp; © 2025 All Rights Reserved</p>
+</footer>
+
+<script>
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('drawer');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  // Close drawer on link click
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
+  // Close drawer on outside click
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !drawer.contains(e.target)) {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+    }
+  });
+
+  // Timeline reveal on scroll
+  const tlItems = document.querySelectorAll('.timeline-item');
+  const tlObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 110);
+    });
+  }, { threshold: 0.1 });
+  tlItems.forEach(item => tlObserver.observe(item));
+
+  // Hero stats fade in
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) {
+    const so = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { heroStats.style.opacity = '1'; } });
+    }, { threshold: 0.3 });
+    so.observe(heroStats);
+  }
+</script>
+</body>
+</html>
