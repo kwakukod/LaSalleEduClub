@@ -150,7 +150,7 @@
   #members { background: var(--warm-white); }
   .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.7rem; margin-top: 1.5rem; }
   .member-chip { background: var(--navy); color: #fff; padding: 0.75rem 1rem; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.02em; display: flex; align-items: center; gap: 0.5rem; }
-  .member-chip svg { color: var(--gold); flex-shrink: 0; }
+  .member-chip .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
   .member-role { font-size: 0.72rem; color: var(--gold); font-weight: 400; margin-left: auto; }
   .judges-section { margin-top: 2.5rem; padding: 1.8rem 2rem; background: var(--cream); border: 1px solid rgba(201,162,39,0.2); }
   .judges-section-title { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
@@ -485,13 +485,13 @@
     <h2 class="section-title">Club Members &amp; Leadership</h2>
     <div class="divider"></div>
     <div class="members-grid">
-      <div class="member-chip"><i data-lucide="user" width="14" height="14"></i>Gloria J. Dolson<span class="member-role">President</span></div>
-      <div class="member-chip"><i data-lucide="user" width="14" height="14"></i>Valarie N. Dolson-Morris</div>
-      <div class="member-chip"><i data-lucide="user" width="14" height="14"></i>Joyce Sanders</div>
-      <div class="member-chip"><i data-lucide="user" width="14" height="14"></i>Portland Jackson</div>
-      <div class="member-chip"><i data-lucide="user" width="14" height="14"></i>Jacqueline J. Sanders</div>
-      <div class="member-chip"><i data-lucide="user" width="14" height="14"></i>Loretta Hamilton</div>
-      <div class="member-chip"><i data-lucide="user" width="14" height="14"></i>Betty Coleman</div>
+      <div class="member-chip"><div class="dot"></div>Gloria J. Dolson<span class="member-role">President</span></div>
+      <div class="member-chip"><div class="dot"></div>Valarie N. Dolson-Morris</div>
+      <div class="member-chip"><div class="dot"></div>Joyce Sanders</div>
+      <div class="member-chip"><div class="dot"></div>Portland Jackson</div>
+      <div class="member-chip"><div class="dot"></div>Jacqueline J. Sanders</div>
+      <div class="member-chip"><div class="dot"></div>Loretta Hamilton</div>
+      <div class="member-chip"><div class="dot"></div>Betty Coleman</div>
     </div>
     <div class="judges-section">
       <div class="judges-section-title">
