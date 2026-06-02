@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The LaSalle Educational Club | Key to Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBg: '#ffffff',
+                        brandSurface: '#f9f9f9',
+                        brandBorder: '#e5e5e5',
+                        brandAccent: '#0a0a0a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #171717;
+        }
+        /* Custom smooth scrolling and minimal glass effects */
+        html { scroll-behavior: smooth; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Custom thin scrollbar to match minimalist layout */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #ffffff; }
+        ::-webkit-scrollbar-thumb { background: #e5e5e5; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4d4d4; }
+    </style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white">
+
+    <header class="fixed top-0 left-0 w-full z-50 glass-card border-b border-brandBorder">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="flex flex-col">
+                <span class="text-sm font-bold tracking-widest uppercase text-black">LaSalle</span>
+                <span class="text-[10px] text-neutral-400 uppercase tracking-wider">Educational Club</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-widest uppercase text-neutral-500">
+                <a href="#about" class="hover:text-brandAccent transition-colors">About</a>
+                <a href="#community" class="hover:text-brandAccent transition-colors">Community</a>
+                <a href="#scholarships" class="hover:text-brandAccent transition-colors">Scholarships</a>
+                <a href="#apply" class="hover:text-brandAccent transition-colors">Apply</a>
+            </nav>
+            <div>
+                <a href="#apply" class="border border-brandAccent px-5 py-2 text-xs uppercase tracking-widest font-semibold bg-black text-white hover:bg-transparent hover:text-black transition-all duration-300">
+                    Apply Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden border-b border-brandBorder">
+        <div class="absolute inset-0 bg-[radial-gradient(#e5e5e5_1px,transparent_1px)] [background-size:16px_16px] opacity-70"></div>
+        <div class="max-w-4xl mx-auto text-center z-10 space-y-8">
+            <div class="inline-block border border-brandBorder bg-neutral-50 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] text-neutral-600 rounded-full">
+                Motto: Key to Success
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-neutral-900 leading-none">
+                Empowering the youth, <br><span class="font-bold opacity-90">building the community.</span>
+            </h1>
+            <p class="text-neutral-500 text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
+                Addressing the educational, social, and developmental needs of local youth in Niagara Falls. Providing global support regardless of race, color, or creed.
+            </p>
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#scholarships" class="bg-black text-white font-semibold text-xs uppercase tracking-widest px-8 py-4 w-full sm:w-auto hover:bg-neutral-800 transition-colors">
+                    Explore 20 Awards
+                </a>
+                <a href="#about" class="border border-brandBorder bg-white font-semibold text-xs uppercase tracking-widest px-8 py-4 w-full sm:w-auto hover:border-neutral-400 transition-colors">
+                    Our Legacy
+                </a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto border-t border-brandBorder">
+                <div>
+                    <p class="text-2xl font-bold text-neutral-900">570+</p>
+                    <p class="text-[10px] text-neutral-400 uppercase tracking-wider mt-1">Scholarships Awarded</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-neutral-900">$153,000+</p>
+                    <p class="text-[10px] text-neutral-400 uppercase tracking-wider mt-1">Total Funds Granted</p>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <p class="text-2xl font-bold text-neutral-900">1957</p>
+                    <p class="text-[10px] text-neutral-400 uppercase tracking-wider mt-1">Year Founded</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto border-b border-brandBorder">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div>
+                <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold mb-3">01 // History & Mission</p>
+                <h2 class="text-3xl font-light text-neutral-900 tracking-tight">Our Mission & Timeline</h2>
+                <p class="text-neutral-500 text-xs mt-4 font-light leading-relaxed">
+                    "It takes an entire village to raise a child." The LaSalle Educational Club, Inc. acts as both an educational trampoline and a foundational community safety net.
+                </p>
+            </div>
+            
+            <div class="lg:col-span-2 space-y-12">
+                <blockquote class="border-l-2 border-black pl-6 py-2">
+                    <p class="text-lg italic text-neutral-700 font-light leading-relaxed">
+                        "To provide healthy, social, and wholesome childhood experiences for youth, empower families to be independent and resourceful, and ensure educational success by raising college scholarship funds."
+                    </p>
+                </blockquote>
+
+                <div class="relative border-l border-brandBorder pl-6 ml-2 space-y-8">
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-black"></div>
+                        <h4 class="text-sm font-bold tracking-wider text-neutral-900">1957 — Ever-Ready Mothers Club</h4>
+                        <p class="text-neutral-500 text-xs mt-1 font-light leading-relaxed">Founded by Mrs. Lexie M. Sanders and 25 visionary mothers operating out of the Griffon Manor housing complex to establish safe, constructive youth community footprints.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-neutral-300"></div>
+                        <h4 class="text-sm font-bold tracking-wider text-neutral-900">1967 — First Awards Banquet</h4>
+                        <p class="text-neutral-500 text-xs mt-1 font-light leading-relaxed">Inaugurated the formal annual Awards Banquet framework to honor local high school graduation metrics.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-neutral-300"></div>
+                        <h4 class="text-sm font-bold tracking-wider text-neutral-900">1979 — The First Formal Scholarship</h4>
+                        <p class="text-neutral-500 text-xs mt-1 font-light leading-relaxed">Formally introduced and granted the historic Rev. James M. Bradley Scholarship to support higher education paths.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-neutral-300"></div>
+                        <h4 class="text-sm font-bold tracking-wider text-neutral-900">1989 — The LaSalle Educational Club</h4>
+                        <p class="text-neutral-500 text-xs mt-1 font-light leading-relaxed">Renamed to explicitly center the organization's overarching modern imperative: full-scale academic support and college funding.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="community" class="py-24 px-6 max-w-7xl mx-auto border-b border-brandBorder">
+        <div class="mb-12">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold mb-3">02 // People & Partners</p>
+            <h2 class="text-3xl font-light text-neutral-900 tracking-tight">Community Foundations</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="border border-brandBorder bg-brandSurface p-6 flex flex-col justify-between space-y-6">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-400 font-semibold block mb-2">Founder Legacy</span>
+                    <h3 class="text-lg font-bold text-neutral-900">Lexie M. Sanders</h3>
+                    <p class="text-neutral-500 text-xs font-light mt-2 leading-relaxed">Championed baseline community literacy, orchestrated the initial adult educational programs with local school systems, and instituted foundational youth assets.</p>
+                </div>
+            </div>
+            <div class="border border-brandBorder bg-brandSurface p-6 flex flex-col justify-between space-y-6">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-400 font-semibold block mb-2">Humanitarian Award</span>
+                    <h3 class="text-lg font-bold text-neutral-900">Yvonne Alston-Taylor</h3>
+                    <p class="text-neutral-500 text-xs font-light mt-2 leading-relaxed">Recognized for a life of profound local service, volunteering as an active healthcare companion and serving inside foundational local support circles.</p>
+                </div>
+            </div>
+            <div class="border border-brandBorder bg-brandSurface p-6 flex flex-col justify-between space-y-6">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-400 font-semibold block mb-2">Community Service</span>
+                    <h3 class="text-lg font-bold text-neutral-900">Dorothy West</h3>
+                    <p class="text-neutral-500 text-xs font-light mt-2 leading-relaxed">A central pillar functioning across several civic operations, integrating the Exchange Club, Kiwanis, Peacemakers, and Lions Club initiatives.</p>
+                </div>
+            </div>
+            <div class="border border-brandBorder bg-brandSurface p-6 flex flex-col justify-between space-y-6">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-neutral-400 font-semibold block mb-2">Educator Award</span>
+                    <h3 class="text-lg font-bold text-neutral-900">Philip Mohr</h3>
+                    <p class="text-neutral-500 text-xs font-light mt-2 leading-relaxed">Dedicated Special Education teacher in the Niagara Falls City School District and sitting President of the Niagara PAL Board.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 border border-brandBorder bg-brandSurface p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="space-y-1">
+                <h4 class="text-xs uppercase tracking-widest font-bold text-neutral-900">Strategic Educational Partnerships</h4>
+                <p class="text-neutral-500 text-xs font-light">Operating in deep ongoing structural coordination with the Niagara Falls City School District.</p>
+            </div>
+            <span class="text-[10px] font-mono border border-brandBorder bg-white px-3 py-1 text-neutral-500 uppercase">District Verified</span>
+        </div>
+    </section>
+
+    <section id="scholarships" class="py-24 px-6 max-w-7xl mx-auto border-b border-brandBorder">
+        <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold mb-3">03 // Available Funding</p>
+                <h2 class="text-3xl font-light text-neutral-900 tracking-tight">The 20 Scholarships & Awards</h2>
+            </div>
+            <p class="text-xs text-neutral-500 max-w-sm font-light">
+                Annually distributed items targeted to Niagara Falls High School graduates extending paths across Higher Ed, Technical Academies, or the Military.
+            </p>
+        </div>
+
+        <div class="border border-brandBorder divide-y divide-brandBorder">
+            
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">01</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">Reverend J.M. Bradley Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">Commemorates the founder of Mt. Erie Missionary Baptist Church. Requires candidate to be African American.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$1,300</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">02</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">Reverend Glenn Raybon Civil Rights Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">Honoring historical pathways in civil rights leadership.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$1,000</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">03</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">Eric L. Jones "I Can" Memorial Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">Awarded for perseverance and strong individual drive.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$1,000</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">04</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">Lexie M. Sanders Community Good Works Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">Honoring foundational local volunteerism and community leadership.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$1,000</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">05</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">Edward "Pete" Ivey Education Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">Targeted to individuals pursuing educational degrees.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$1,000</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">06</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">LaSalle Educational Club Inc. Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">General flagship organizational academic scholarship.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$1,000</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">07</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">Neziezadie McBride Brown Integrity Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">Focused on high ethical performance and academic honor metrics.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$1,000</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">08</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">Nathan A. Dolson Jr. Leadership Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">Awarded to student leaders demonstrating exceptional organization governance.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$800</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-12 items-center gap-4 hover:bg-neutral-50 transition-colors">
+                <div class="sm:col-span-1 text-neutral-400 font-mono text-xs">09</div>
+                <div class="sm:col-span-8">
+                    <h4 class="text-sm font-bold text-neutral-900 tracking-wide">LaSalle Educational Club Inc. Good Faith Scholarship</h4>
+                    <p class="text-[11px] text-neutral-500 mt-0.5 font-light">Academic support standard dedicated to balanced community performance.</p>
+                </div>
+                <div class="sm:col-span-3 sm:text-right text-sm font-mono tracking-wider font-semibold text-neutral-900">$600</div>
+            </div>
+
+            <div class="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 bg-brandSurface">
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">10 // $500</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Shalise Monet Carter Humanitarian Award</h5>
+                    </div>
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">11 // $500</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Theodore Williamson Education Scholarship</h5>
+                    </div>
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">12 // $500</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Men Standing Strong Together Award</h5>
+                    </div>
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">13 // $500</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Niagara Falls NY Community Lion Club Award</h5>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">14 // $500</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Frontier Chapter Eastern Star Scholarship</h5>
+                    </div>
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">15 // $400</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Kelab Sanders Jr. Brotherhood Scholarship</h5>
+                    </div>
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">16 // $300</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Councilman Robert A. Anderson Jr. Award</h5>
+                    </div>
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">17 // $300</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Lillie P. Stephens Female Athletic Award</h5>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">18 // $200</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Shalise Monet Carter Memorial Award</h5>
+                    </div>
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">19 // $200</p>
+                        <h5 class="text-xs font-bold text-neutral-900">LaSalle Educational Club Student Award</h5>
+                    </div>
+                    <div>
+                        <p class="text-xs font-mono text-neutral-400">20 // Varies</p>
+                        <h5 class="text-xs font-bold text-neutral-900">Erica M. Rivers Memorial Athletic Scholarship</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div>
+                <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold mb-3">04 // Requirements Portal</p>
+                <h2 class="text-3xl font-light text-neutral-900 tracking-tight">Application Guidelines</h2>
+                <p class="text-neutral-500 text-xs mt-4 font-light leading-relaxed">
+                    Students of all ethnic backgrounds, military enrollees, and incoming vocational or trade school assets are explicitly encouraged to apply.
+                </p>
+            </div>
+
+            <div class="lg:col-span-2 space-y-8">
+                <div class="border border-brandBorder bg-brandSurface p-8 space-y-6">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-neutral-900">Submission Inventory Check</h3>
+                    <ul class="text-xs space-y-4 font-light text-neutral-700">
+                        <li class="flex items-start gap-3">
+                            <span class="font-mono text-neutral-400">[01]</span>
+                            <span>Official High School <strong>Transcript</strong> directly submitted.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-mono text-neutral-400">[02]</span>
+                            <span>Formal <strong>Cover Letter</strong> precisely identifying target awards.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-mono text-neutral-400">[03]</span>
+                            <span>A structured, individual <strong>500-word academic essay</strong>.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="border border-brandBorder p-6 space-y-2 bg-red-50/50">
+                        <span class="text-[10px] uppercase tracking-wider text-red-600 font-bold">⚠️ Mandatory Rule</span>
+                        <h4 class="text-xs font-bold text-neutral-900 uppercase tracking-wide">Banquet Attendance</h4>
+                        <p class="text-neutral-600 text-[11px] font-light leading-relaxed">
+                            Award winners must be physically present at the ceremony. If absent, a parent or legal guardian must attend to receive the award on their behalf, or it will be forfeited without exception.
+                        </p>
+                    </div>
+                    <div class="border border-brandBorder p-6 space-y-2">
+                        <span class="text-[10px] uppercase tracking-wider text-neutral-500 font-bold">⏳ Time Frame</span>
+                        <h4 class="text-xs font-bold text-neutral-900 uppercase tracking-wide">One-Year Claim Policy</h4>
+                        <p class="text-neutral-600 text-[11px] font-light leading-relaxed">
+                            Students have exactly one calendar year from the award banquet date to officially claim their scholarship capital allocations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-brandBorder bg-brandSurface text-neutral-500 text-xs py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-2">
+                <p class="text-neutral-900 font-bold tracking-widest text-xs uppercase">The LaSalle Educational Club Inc.</p>
+                <p class="text-[11px] font-light max-w-xs">Nurturing youth and building independent, resourceful community pathways in Niagara Falls since 1957.</p>
+            </div>
+            <div class="space-y-2 font-light">
+                <p class="text-neutral-900 font-semibold text-[11px] tracking-wider uppercase">Footprint Logistics</p>
+                <p class="text-[11px]">1352 Cleveland Avenue<br>Niagara Falls, NY 14305</p>
+                <p class="text-[11px] font-mono">T: 716-285-2965</p>
+            </div>
+            <div class="flex md:justify-end items-end">
+                <p class="text-[10px] font-mono tracking-wider">&copy; 2026 LaSalle Educational Club. Key to Success.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
