@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Page Not Found | LaSalle Educational Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c9a227;
+    --gold-light: #f0d060;
+    --bg-dark: #070f24;
+    --border: rgba(201, 162, 39, 0.2);
+    --text-light: #fffef8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { 
+    font-family: 'Source Sans 3', sans-serif; 
+    background: var(--bg-dark); 
+    color: var(--text-light); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh; 
+    padding: 2rem 1.5rem;
+  }
+  
+  .error-card { 
+    background: var(--navy); 
+    border: 1px solid var(--border); 
+    padding: 3rem 2.5rem 2.5rem 2.5rem; 
+    width: 100%; 
+    max-width: 480px; 
+    text-align: center; 
+    box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+  }
+
+  /* Logo Branding Header Style */
+  .brand-header {
+    margin-bottom: 2rem; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 0.75rem;
+    text-align: left;
+  }
+  .brand-header img {
+    height: 48px; 
+    width: 48px; 
+    object-fit: contain;
+  }
+  .brand-text {
+    border-left: 2px solid var(--gold); 
+    padding-left: 0.75rem;
+  }
+  .brand-title {
+    font-weight: 700; 
+    font-size: 1.1rem; 
+    color: #fff; 
+    line-height: 1.1; 
+    letter-spacing: 0.02em;
+  }
+  .brand-subtitle {
+    font-size: 0.72rem; 
+    color: var(--gold); 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em;
+  }
+  
+  .error-code {
+    font-size: 5.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+  }
+  
+  h1 { 
+    font-weight: 600; 
+    font-size: 1.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem; 
+  }
+  
+  p.error-desc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .countdown-text {
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  
+  .return-btn { 
+    background: var(--gold); 
+    color: var(--navy); 
+    border: none; 
+    padding: 0.85rem 2rem; 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: all 0.2s; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 0.5rem;
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    text-decoration: none;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .return-btn:hover { 
+    background: var(--gold-light); 
+    box-shadow: 0 5px 15px rgba(201, 162, 39, 0.2);
+  }
+  
+  .footer-credit { 
+    color: rgba(255,255,255,0.3); 
+    font-size: 0.8rem; 
+    border-top: 1px solid rgba(201, 162, 39, 0.1);
+    padding-top: 1.25rem;
+    margin-top: 0.5rem;
+  }
+  .footer-credit a { 
+    color: var(--gold); 
+    text-decoration: none; 
+    font-weight: 600;
+  }
+  .footer-credit a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<div class="error-card">
+  <div class="brand-header">
+    <img src="/assets/logo.png" alt="LaSalle Educational Club Logo">
+    <div class="brand-text">
+      <div class="brand-title">LaSalle</div>
+      <div class="brand-subtitle">Educational Club</div>
+    </div>
+  </div>
+
+  <div class="error-code">404</div>
+  <h1>Page Not Found</h1>
+  <p class="error-desc">The directory path you are looking for does not exist, has been archived, or moved permanently.</p>
+  
+  <div class="countdown-text">
+    Returning to home portal in <span id="timer">10</span> seconds...
+  </div>
+
+  <a href="/index.html" class="return-btn">
+    <i data-lucide="arrow-left" width="16" height="16"></i> Return Home
+  </a>
+  
+  <div class="footer-credit">
+    Engineered securely by <a href="https://www.kodstech.org" target="_blank">kods tech.</a>
+  </div>
+</div>
+
+<script>
+  // Initialize dynamic vector icons
+  lucide.createIcons();
+
+  // Simple countdown ticker
+  let secondsRemaining = 10;
+  const timerDisplay = document.getElementById('timer');
+
+  const countdown = setInterval(() => {
+    secondsRemaining--;
+    timerDisplay.textContent = secondsRemaining;
+    
+    if (secondsRemaining <= 0) {
+      clearInterval(countdown);
+      window.location.href = "/index.html"; // Redirect to your live landing layout
+    }
+  }, 1000);
+</script>
+</body>
+</html>

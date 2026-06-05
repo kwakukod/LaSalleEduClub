@@ -14,12 +14,11 @@ const navLinks = [
 
 const scholarships = [
   { name: 'Reverend J.M. Bradley Scholarship<br><small style="font-weight:400;color:#999">(Must be African American)</small>', amount: '$1,300' },
-  { name: 'Reverend Glenn Raybon Civil Rights Scholarship', amount: '$1,000' },
+  { name: 'Reverend Glenn Raybon Civil Rights Scholarship<br><small style="font-weight:400;color:#999">(Sponsored by the LaSalle Educational Club)</small>', amount: '$1,000' },
   { name: 'Eric L. Jones "I Can" Memorial Scholarship', amount: '$1,000' },
   { name: 'Lexie M. Sanders Community Good Works Scholarship', amount: '$1,000' },
   { name: 'Edward "Pete" Ivey Education Scholarship', amount: '$1,000' },
   { name: 'LaSalle Educational Club Inc. Scholarship', amount: '$1,000' },
-  { name: 'Neziezadie McBride Brown Integrity Scholarship', amount: '$1,000' },
   { name: 'Nathan A. Dolson Jr. Leadership Scholarship', amount: '$800' },
   { name: 'LaSalle Educational Club Inc. Good Faith Scholarship', amount: '$600' },
   { name: 'Shalise Monet Carter Humanitarian Scholarship', amount: '$500' },
@@ -27,11 +26,14 @@ const scholarships = [
   { name: 'Men Standing Strong Together Scholarship', amount: '$500' },
   { name: 'Niagara Falls NY Community Lion Club Scholarship', amount: '$500' },
   { name: 'Frontier Chapter No. 20 Eastern Star Education Scholarship', amount: '$500' },
+  { name: 'Sadie Mae Martin/Willier Lee Martin Blacktop Scholarship', amount: '$500' },
+  { name: 'Lillie P. Stephens Female Athletic Award', amount: '$500' },
+  { name: 'Niagara Ministerial Council Award', amount: '$500' },
   { name: 'Kelab Sanders Jr. Brotherhood Scholarship', amount: '$400' },
   { name: 'Councilman Robert A. Anderson Jr. Memorial Scholarship', amount: '$300' },
-  { name: 'Lillie P. Stephens Female Athletic Award', amount: '$300' },
   { name: 'Shalise Monet Carter Memorial Award', amount: '$200' },
-  { name: 'LaSalle Educational Club Inc. Student Award', amount: '$200' }
+  { name: 'LaSalle Educational Club Inc. Student Award', amount: '$200' },
+  { name: 'Niagara Falls Future Advocate Award', amount: '$200' }
 ];
 
 const recipients = [
