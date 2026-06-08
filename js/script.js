@@ -32,6 +32,22 @@ const renderSiteData = () => {
     `).join('');
   }
 
+  // ==========================================
+  // AUTO-CALCULATE SCHOLARSHIP TOTALS
+  // ==========================================
+  const totalScholarshipsCount = typeof scholarships !== 'undefined' ? scholarships.length : 0;
+
+  const scholarshipIntroSpan = document.getElementById('scholarship-count-dynamic');
+  if (scholarshipIntroSpan) {
+    scholarshipIntroSpan.textContent = totalScholarshipsCount;
+  }
+
+  const applySectionSpan = document.getElementById('apply-count-dynamic');
+  if (applySectionSpan) {
+    applySectionSpan.textContent = totalScholarshipsCount;
+  }
+  // ==========================================
+
   // Inject Recipients
   if (recipientsContainer && typeof recipients !== 'undefined') {
     recipientsContainer.innerHTML = recipients.map(r => `
