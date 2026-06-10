@@ -65,6 +65,21 @@ const renderSiteData = () => {
     footerYearSpan.textContent = new Date().getFullYear();
   }
 
+  // Auto-Update Announcement Year Dynamically (Rolls over every July)
+  const announcementYearEl = document.getElementById('announcement-year');
+  if (announcementYearEl) {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth(); // Note: January is 0, June is 5, July is 6
+
+    // If it's July (6) or later, show next year's date
+    if (currentMonth >= 6) {
+      announcementYearEl.textContent = currentYear + 1;
+    } else {
+      announcementYearEl.textContent = currentYear;
+    }
+  }
+
   // Fire Lucide icons explicitly AFTER elements are injected into the DOM
   if (window.lucide) {
     lucide.createIcons();

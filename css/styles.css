@@ -120,6 +120,9 @@
 
   /* ======== RECIPIENTS ======== */
   #recipients { background: var(--cream); }
+  .recipients-announcement-note { display: flex; align-items: center; gap: 0.75rem; background: rgba(201, 162, 39, 0.08); padding: 1rem 1.25rem; margin-top: 1rem; margin-bottom: 1.5rem; border-radius: 0 4px 4px 0; color: var(--text-dark); font-size: 0.95rem; }
+  .recipients-announcement-note i { color: var(--gold); flex-shrink: 0; }
+  .recipients-announcement-note strong { color: var(--navy); font-weight: 700; }
   .recipients-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.9rem; margin-top: 1.5rem; }
   .recipient-card { background: #fff; padding: 1.1rem 1.3rem; border-top: 3px solid var(--gold); }
   .recipient-name { font-weight: 700; font-size: 0.93rem; color: var(--navy); margin-bottom: 0.2rem; }
