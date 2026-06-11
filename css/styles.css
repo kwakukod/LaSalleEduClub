@@ -214,3 +214,13 @@
     .members-grid { grid-template-columns: 1fr; }
     .hero-title { font-size: 2rem; }
   }
+
+  /* Neutralize automatic mobile browser phone link styling */
+  a[href^="tel:"] {
+    color: var(--gold-light) !important;
+    text-decoration: none !important;
+  }
+  a[href^="tel:"]:hover,
+  a[href^="tel:"]:focus {
+    color: var(--gold) !important;
+  }
