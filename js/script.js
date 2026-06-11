@@ -7,6 +7,11 @@ const renderSiteData = () => {
   const mobileNav = document.getElementById('mobile-nav-container');
   const scholarshipContainer = document.getElementById('scholarship-container');
   const recipientsContainer = document.getElementById('recipients-container');
+  
+  // Target containers for administrative directories parity
+  const honoreesContainer = document.getElementById('dynamic-honorees-container');
+  const judgesContainer = document.getElementById('dynamic-judges-container');
+  const escortsContainer = document.getElementById('dynamic-escorts-container');
 
   // Inject Desktop Navigation Links
   if (desktopNav && typeof navLinks !== 'undefined') {
@@ -59,28 +64,82 @@ const renderSiteData = () => {
     `).join('');
   }
 
+  // Inject Full Dynamic Honoree Cards (Honoring Admin panel selection overrides)
+  if (honoreesContainer && typeof annualHonorees !== 'undefined') {
+    honoreesContainer.innerHTML = annualHonorees.map(h => {
+      let iconName = 'award';
+      
+      // 1. If an icon was explicitly set via the Admin Panel, prioritize it
+      if (h.icon) {
+        iconName = h.icon;
+      } 
+      // 2. Fall back to semantic string identification matching for safety
+      else if (h.award) {
+        const awardLower = h.award.toLowerCase();
+        if (awardLower.includes('humanitarian')) iconName = 'heart-handshake';
+        else if (awardLower.includes('service') || awardLower.includes('community')) iconName = 'users';
+        else if (awardLower.includes('educator') || awardLower.includes('teacher')) iconName = 'book-marked';
+      }
+
+      return `
+        <div class="honoree-card">
+          <div class="honoree-icon">
+            <div class="honoree-icon-wrap"><i data-lucide="${iconName}" width="24" height="24"></i></div>
+          </div>
+          <div class="honoree-award-tag">${h.award || ''}</div>
+          <div class="honoree-name">${h.name || ''}</div>
+          <div class="honoree-bio">${h.bio || ''}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Inject Scholarship Committee Judges Dynamically
+  if (judgesContainer && typeof scholarshipJudges !== 'undefined') {
+    judgesContainer.innerHTML = scholarshipJudges.map(name => `
+      <span class="judge-tag">${name}</span>
+    `).join('');
+  }
+
+  // Inject Hostesses & Escorts Dynamically
+  if (escortsContainer && typeof hostessesAndEscorts !== 'undefined') {
+    escortsContainer.innerHTML = hostessesAndEscorts.map(name => `
+      <span class="judge-tag">${name}</span>
+    `).join('');
+  }
+
   // Auto-Update Footer Year Dynamically
   const footerYearSpan = document.getElementById('footer-year');
   if (footerYearSpan) {
     footerYearSpan.textContent = new Date().getFullYear();
   }
 
-  // Auto-Update Announcement Year Dynamically (Rolls over every July)
-  const announcementYearEl = document.getElementById('announcement-year');
-  if (announcementYearEl) {
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth(); // Note: January is 0, June is 5, July is 6
+  // ==========================================================================
+  // HARDWARE DECOUPLING LAYER: SYSTEM YEAR INJECTION ENGINE
+  // ==========================================================================
+  if (typeof systemYearConfig !== 'undefined') {
+    const elMap = {
+      'scholarship-season-year': systemYearConfig.scholarshipSeasonYear,
+      'recipients-class-year': systemYearConfig.recipientsClassYear,
+      'recipients-title-year': systemYearConfig.recipientsTitleYear,
+      'announcement-year': systemYearConfig.announcementYear,
+      'honorees-season-year': systemYearConfig.honoreesSeasonYear,
+      'judges-season-year': systemYearConfig.judgesSeasonYear,
+      'escorts-season-year': systemYearConfig.escortsSeasonYear,
+      'apply-title-year': systemYearConfig.applyTitleYear,
+      'apply-class-year': systemYearConfig.applyTitleYear // Linked directly to match application target context
+    };
 
-    // If it's July (6) or later, show next year's date
-    if (currentMonth >= 6) {
-      announcementYearEl.textContent = currentYear + 1;
-    } else {
-      announcementYearEl.textContent = currentYear;
-    }
+    // Cycle across DOM targets and securely inject the compiled configuration strings
+    Object.keys(elMap).forEach(id => {
+      const el = document.getElementById(id);
+      if (el && elMap[id]) {
+        el.textContent = elMap[id];
+      }
+    });
   }
 
-  // Fire Lucide icons explicitly AFTER elements are injected into the DOM
+  // Re-initialize dynamic Lucide graphics components cleanly on data mutations
   if (window.lucide) {
     lucide.createIcons();
   }
@@ -91,10 +150,8 @@ const renderSiteData = () => {
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Run data mapping engine
   renderSiteData();
 
-  // 2. Hamburger menu toggle interactions
   const hamburger = document.getElementById('hamburger');
   const drawer = document.getElementById('drawer');
 
@@ -104,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
       drawer.classList.toggle('open');
     });
 
-    // Handle drawer links via delegation
     drawer.addEventListener('click', (e) => {
       if (e.target.classList.contains('drawer-link')) {
         hamburger.classList.remove('open');
@@ -120,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Timeline reveal animation scroll handler
   const tlItems = document.querySelectorAll('.timeline-item');
   if (tlItems.length > 0) {
     const tlObserver = new IntersectionObserver((entries) => {
@@ -133,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     tlItems.forEach(item => tlObserver.observe(item));
   }
 
-  // 4. Hero stats animation fade-in observer
   const heroStats = document.querySelector('.hero-stats');
   if (heroStats) {
     const so = new IntersectionObserver((entries) => {

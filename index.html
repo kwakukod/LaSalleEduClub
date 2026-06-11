@@ -19,7 +19,7 @@
 <link rel="shortcut icon" href="./assets/favicon.ico">
 
 <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+<link class="fav-icon" rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48x48.png">
 
 <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
@@ -197,12 +197,11 @@
 
 <section id="scholarships">
   <div class="section-inner">
-    <p class="section-label">2026 Scholarship Season</p>
+    <p class="section-label"><span id="scholarship-season-year">2026</span> Scholarship Season</p>
     <h2 class="section-title">Scholarships &amp; Awards Available</h2>
     <div class="divider"></div>
     <p class="scholarship-intro">The LaSalle Educational Club Inc. offers <strong id="scholarship-count-dynamic">...</strong> <strong>named scholarships and awards</strong> to graduating Niagara Falls High School students. Open to all ethnic backgrounds, including those enrolling in college, vocational/trade school, or the military.</p>
-    <div class="scholarship-grid" id="scholarship-container">
-      </div>
+    <div class="scholarship-grid" id="scholarship-container"></div>
     <div class="scholarship-note">
       <div class="scholarship-note-title">
         <i data-lucide="clipboard-list" width="20" height="20"></i>
@@ -224,57 +223,23 @@
 
 <section id="recipients">
   <div class="section-inner">
-    <p class="section-label">Class of 2025</p>
-    <h2 class="section-title">2025 Scholarship Recipients</h2>
+    <p class="section-label">Class of <span id="recipients-class-year">2026</span></p>
+    <h2 class="section-title"><span id="recipients-title-year">2026</span> Scholarship Recipients</h2>
     <div class="divider"></div>
     <div class="recipients-announcement-note">
       <i data-lucide="megaphone" width="18" height="18"></i>
-      <span>The <strong id="announcement-year">2025</strong> scholarship recipients will be announced at the Annual Banquet in June.</span>
+      <span>The next scholarship recipients will be announced at the Annual Banquet in June <strong id="announcement-year">2026</strong>.</span>
     </div>
-    <div class="recipients-grid" id="recipients-container">
-      </div>
+    <div class="recipients-grid" id="recipients-container"></div>
   </div>
 </section>
 
 <section id="honorees">
   <div class="section-inner">
-    <p class="section-label" style="color:var(--gold)">2026 Honorees</p>
+    <p class="section-label" style="color:var(--gold)"><span id="honorees-season-year">2026</span> Honorees</p>
     <h2 class="section-title light">Community Leaders We Celebrate</h2>
     <div class="divider"></div>
-    <div class="honorees-flex">
-      <div class="honoree-card">
-        <div class="honoree-icon">
-          <div class="honoree-icon-wrap"><i data-lucide="heart-handshake" width="24" height="24"></i></div>
-        </div>
-        <div class="honoree-award-tag">Humanitarian Award</div>
-        <div class="honoree-name">Minister Rick Dumas Sr.</div>
-        <div class="honoree-bio">A lifelong community servant, sound engineer, and musician, Minister Dumas spent over two decades with the NFCSD and 15 years volunteering with Youth for Christ Ministries. Through his sound business, he serves area churches and key civic events like Juneteenth. He currently serves as Minister of Music and AV Tech for Potter’s House CCC and has been happily married for 44 years.</div>
-      </div>
-      <div class="honoree-card" style="display: none;">
-        <div class="honoree-icon">
-          <div class="honoree-icon-wrap"><i data-lucide="users" width="24" height="24"></i></div>
-        </div>
-        <div class="honoree-award-tag">Community Service Award</div>
-        <div class="honoree-name">Dorothy West</div>
-        <div class="honoree-bio">Born and raised in Niagara Falls, Dorothy has dedicated her life to community involvement — Parent President of LaSalle Preparatory School, Exchange Club, Kiwanis Club, Niagara County Peacemakers, Lion Club, and Niagara Gospel Mission.</div>
-      </div>
-      <div class="honoree-card">
-        <div class="honoree-icon">
-          <div class="honoree-icon-wrap"><i data-lucide="book-marked" width="24" height="24"></i></div>
-        </div>
-        <div class="honoree-award-tag">Educator Award</div>
-        <div class="honoree-name">Angela Manella</div>
-        <div class="honoree-bio">An experienced educational leader with over 30 years in education, Ms. Manella serves as Principal of Cataract Elementary School. A Niagara University and Buffalo State alumna, she has spent her career improving student outcomes, mentoring educators, and serving the Niagara Falls community. She is also a proud mother of four sons who all attended Niagara Falls City Schools.</div>
-      </div>
-      <div class="honoree-card">
-      <div class="honoree-icon">
-        <div class="honoree-icon-wrap"><i data-lucide="award" width="24" height="24"></i></div>
-      </div>
-      <div class="honoree-award-tag">Teacher of the Year Award</div>
-      <div class="honoree-name">Lauren Falsetti</div>
-      <div class="honoree-bio">A lifelong resident and proud alumna of the district, Ms. Falsetti is in her 15th year with the NFCSD, currently teaching 2nd grade at Kalfas Elementary School. With degrees from Buffalo State and Niagara University, she brings global perspective and local dedication to her classroom. She is known for building resilient, confident students, and leading impactful initiatives like her student gardening club.</div>
-    </div>
-    </div>
+    <div class="honorees-flex" id="dynamic-honorees-container"></div>
   </div>
 </section>
 
@@ -295,33 +260,16 @@
     <div class="judges-section">
       <div class="judges-section-title">
         <i data-lucide="scale" width="18" height="18"></i>
-        <h4>2026 Scholarship Judges</h4>
+        <h4><span id="judges-season-year">2026</span> Scholarship Judges</h4>
       </div>
-      <div class="judge-list">
-        <span class="judge-tag">Dr. Robin Erwin</span>
-        <span class="judge-tag">Rev. Charles Walker III</span>
-        <span class="judge-tag">Stephanie W. Cowart</span>
-        <span class="judge-tag">Monica Hamilton</span>
-        <span class="judge-tag">Stephaine Huston</span>
-      </div>
+      <div class="judge-list" id="dynamic-judges-container"></div>
     </div>
     <div class="judges-section" style="margin-top:1.2rem;">
       <div class="judges-section-title">
         <i data-lucide="star" width="18" height="18"></i>
-        <h4>2026 Hostesses &amp; Escorts</h4>
+        <h4><span id="escorts-season-year">2026</span> Hostesses &amp; Escorts</h4>
       </div>
-      <div class="judge-list">
-        <span class="judge-tag">Adrian McQueen</span>
-        <span class="judge-tag">Andrea Douglas</span>
-        <span class="judge-tag">Carretha Brown</span>
-        <span class="judge-tag">Clayburn Powell</span>
-        <span class="judge-tag">Gradycia Williams</span>
-        <span class="judge-tag">Sean Mapp</span>
-        <span class="judge-tag">Sondra Brown</span>
-        <span class="judge-tag">Stephanie Lee-Martin</span>
-        <span class="judge-tag">Stephon Lee</span>
-        <span class="judge-tag">Vincent Cauley</span>
-      </div>
+      <div class="judge-list" id="dynamic-escorts-container"></div>
     </div>
   </div>
 </section>
@@ -331,9 +279,9 @@
     <div class="apply-wrap">
       <div class="apply-text">
         <p class="section-label" style="color:var(--gold)">For Students</p>
-        <h2 class="section-title light">Apply for a 2026 Scholarship</h2>
+        <h2 class="section-title light">Apply for a <span id="apply-title-year">2026</span> Scholarship</h2>
         <div class="divider"></div>
-        <p>Are you a graduating Niagara Falls High School student? The LaSalle Educational Club Inc. invites you to apply for one of our <strong style="color:#fff"><span id="apply-count-dynamic">...</span> scholarships and awards</strong> for the Class of 2026.</p>
+        <p>Are you a graduating Niagara Falls High School student? The LaSalle Educational Club Inc. invites you to apply for one of our <strong style="color:#fff"><span id="apply-count-dynamic">...</span> scholarships and awards</strong> for the Class of <span id="apply-class-year">2026</span>.</p>
         <p>Applications are available at the NFHS Guidance Office. Students of all ethnic backgrounds and those enrolling in college, vocational/trade school, or the military are encouraged to apply.</p>
         <div class="deadline-row">
           <i data-lucide="clock" width="18" height="18"></i>
@@ -376,4 +324,4 @@
 <script src="./js/data.js"></script>
 <script src="./js/script.js"></script>
 </body>
-</html>
+</html>>
